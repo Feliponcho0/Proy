@@ -1,25 +1,77 @@
+<?php
+    $error = $_GET['error'] ?? '';
+?>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Solo intentamos mostrar el modal si existe el elemento en el DOM
+        var errorModalEl = document.getElementById('error');
+        if (errorModalEl) {
+            var modal = new bootstrap.Modal(errorModalEl);
+            modal.show();
+            
+</script>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset = "UTF-8">
     <link href = "https://fonts.googleapis.com/css2?family=Signika&display=swap" rel = "stylesheet">
-    <link href = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel = "stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
-    <link href="../css/style.css" rel="stylesheet">
-
     <title>Core Multistore</title>
 </head>
+
+<!-- lo siguiente es un modal de error que se muestra cuando el usuario o contraseña son inválidos, se activa con el parámetro de error en la URL -->
+<div class="modal fade" id = "error" tabindex="-10">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Error</h5>
+            </div>
+            <div class="modal-body">
+                <?php if($error == 1): ?>
+                    <p class = "text-danger">
+                        Usuario o contraseña incorrectos. Por favor, inténtalo de nuevo.
+                    </p>
+                <?php elseif($error == 2): ?>
+                    <p class = "text-danger">
+                        Debes iniciar sesión para acceder a esta página.
+                    </p>
+                <?php elseif($error == 3): ?>
+                    <p class = "text-danger">
+                        No tienes permiso para acceder a esta página.
+                    </p>
+                <?php endif; ?>
+            </div>
+            <div class = "modal-footer">
+            <button type = "button" class = "btn btn-secondary" data-bs-dismiss="modal">
+                Cerrar
+            </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <body class = "m-0 p-0">
     <div class = "d-flex vh-100 w-100 p-4">
         <div class = "d-flex w-100">
             <div class = "border border-dark border-2 flex-fill d-flex justify-content-center align-items-center">
                 <div class = "text-center" style = "font-family: 'Signika', sans-serif;">
                     <div class = "d-flex align-items-center justify-content-center mb-4">
-
-                        <div class="w-100 d-flex justify-content-center pt-2">
-                            <img class="logo" src="../img/logocore2.png" alt="">
+                        <div>
+                            <img src = "img/Logo_Core.png" style = "width: 100px; height: auto;">
                         </div>
-
+                        <div class = "ms-0" style = "width: 100px; height: auto;">
+                            <h1 class = "fw-bold mb-1">
+                                CORE
+                            </h1>
+                            <p class = "justify-content-center align-items-center fw-semibold text-secondary mb-4">
+                                MULTISTORE
+                            </p>
+                        </div>
                     </div>
                     <h2 class = "h5 fw-bold mt-3">
                         Bienvenido al Sistema
@@ -28,31 +80,29 @@
                         Inicia sesión para continuar
                     </p>
                     
-                    <form action = "#" method = "post" class = "text-start">
+                    <form action = "validaciones/validarLogin.php" method = "post" class = "text-start">
                         <div class = "mb-3">
                             <label for = "usuario" class = "form-label fw-semibold">
                                 Usuario o Correo
                             </label>
-                            <input type = "text" class = "form-control border border-primary border-2" id = "usuario" name = "usuario"  placeholder = "Ingresa tu usuario o correo">
+                            <input type = "text" class = "form-control border border-primary border-2" id = "usuario" name = "usuario" required placeholder = "Ingresa tu usuario o correo">
                         </div>
                         <div class = "mb-3">
                             <label for = "password" class = "form-label fw-semibold">
                                 Contraseña
                             </label>
-                            <input type = "password" class = "form-control border border-primary border-2" id = "password" name = "password"  placeholder = "Ingresa tu contraseña">
+                            <input type = "password" class = "form-control border border-primary border-2" id = "password" name = "password" required placeholder = "Ingresa tu contraseña">
                         </div>
-                            <div class = "d-grid gap-2 mt-4">
-                            </div>
+                        <div class = "d-grid gap-2 mt-4">
+                            <button action = "submit" href = "validaciones/validarLogin.php" class = "btn py-2 fw-semibold" type = "submit" style = "background-color: transparent; border: 2px solid #012e46; color: #012e46; transition: all 0.5s;" onmouseover = "this.style.backgroundColor = '#012e46'; this.style.color = 'white';" onmouseout = "this.style.backgroundColor = 'transparent'; this.style.color = '#012e46';">
+                                Iniciar sesión
+                            </button>
+                        </div>
                     </form>
-
-                    <a href="pages/dashboard.html" class="btn py-2 fw-semibold"
-                    style="background-color: transparent; border: 2px solid #012e46; color: #012e46;">
-                        Iniciar sesión
-                    </a>
                     
                     <hr class = "my-4">
                     
-                    <a href = "#" class = "text-decoration-none">
+                    <a href = "pages/olvidoContra.html" class = "text-decoration-none">
                         <p class = "small mt-3 mb-0">
                             ¿Olvidaste tu contraseña?
                         </p>
@@ -73,7 +123,7 @@
                             Control total sobre ventas, inventario, cajero reportes en tiempo real.
                         </p>
 
-                        <div class = "mb-3" style = "border-radius: 10px;">
+                        <div class = "border border-primary border-2 mb-3" style = "border-radius: 10px;">
                             <div class = "d-flex align-items-center ms-2 mt-2 mb-2" style = "gap: 15px;">
                                 <div class = "" style = "border-radius: 10px; width: 60px; height: 60px;">
                                     <img src = "img/Logo.jpg" class = "mb-4" style = "width: 50px; height: auto;">
@@ -89,7 +139,7 @@
                             </div>
                         </div>
 
-                        <div class = "mb-3" style = "border-radius: 10px;">
+                        <div class = "border border-primary border-2 mb-3" style = "border-radius: 10px;">
                             <div class = "d-flex align-items-center ms-2 mt-2 mb-2" style = "gap: 15px;">
                                 <div style = "border-radius: 10px; width: 60px; height: 60px;">
                                     <img src = "img/Logo.jpg" class = "mb-4" style = "width: 50px; height: auto;">
@@ -105,7 +155,7 @@
                             </div>
                         </div>
 
-                        <div class = "mb-3" style = "border-radius: 10px;">
+                        <div class = "border border-primary border-2 mb-3" style = "border-radius: 10px;">
                             <div class = "d-flex align-items-center ms-2 mt-2 mb-2" style = "gap: 15px;">
                                 <div style = "border-radius: 10px; width: 60px; height: 60px;">
                                     <img src = "img/Logo.jpg" class = "mb-4" style = "width: 50px; height: auto;">
@@ -120,7 +170,6 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
