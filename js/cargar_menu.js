@@ -3,6 +3,9 @@ fetch('menu.html')
     .then(html =>{
         document.getElementById('menu').innerHTML=html;
 
+        const contenido = document.getElementById('contenido-principal');
+        const columna = document.querySelector('#menu .col.p-0');
+        if (contenido && columna) columna.appendChild(contenido);
 
     const pagina =window.location.href;
 
