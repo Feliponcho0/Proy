@@ -18,7 +18,7 @@
         min-height: 100vh;
     }
     /* Barra de navegación superior */
-    .navbar{
+    .navbar-superior{
         background-color: var(--colorTopbar);
     }
 
@@ -44,7 +44,7 @@
 
     .menu-desplegable strong {
         font-size: 14px; 
-    }
+    }   
 
     .menu-desplegable small {
         font-size: 12px; 

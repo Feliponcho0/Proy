@@ -17,10 +17,10 @@
             exit;
         }
         // Si no es Admin, redirige a algún lado (ej. dashboard de cliente)
-        header('Location: ../login.php');
+        header('Location: ../index.html');
         exit;
     } else {
-        header('Location: ../login.php?error=1');
+        header('Location: ../index.html?error=1');
         exit;
     }
 ?>
