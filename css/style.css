@@ -13,17 +13,22 @@
         --colorNaranja: #D97706;
     }
 
-    body{
+    html, body{
         background-image: linear-gradient(to top, var(--colorBody) 0%, #e6e7e7 100%);
-        min-height: 100vh;
+        min-height: 100%;
     }
+    
+    #mi-contenido {
+        display: none;
+    }
+
     /* Barra de navegación superior */
     .navbar-superior{
         background-color: var(--colorTopbar);
     }
 
     .tipoLetra{
-        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-family: 'Inter', sans-serif;
     }
 
     .navbar h6{
@@ -56,6 +61,7 @@
 
     .menu-desplegable{
         width: 220px;
+        
     }
 
     .dropdown-menu p{
@@ -72,6 +78,9 @@
     .titulo-terciario h3{
         font-size: 15px;
         color: var(--colorCursor);
+    }
+    .subtitulo small{
+        font-size: 24px;
     }
 
     .dropdown-item:hover{
@@ -120,12 +129,15 @@
         
     }
 
-    /* SVG dentro del nav */
-    .nav-link svg {
+    .card:hover {
         transition: all 0.5s ease;
+        transform: scale(1.01);
     }
 
-    /* Hover */
-    .nav-link:hover svg {
-        stroke-width: 2;
+    .row.flex-nowrap {
+    overflow: visible !important;
+    }
+
+    .col.p-0 {
+        overflow: visible !important;
     }
