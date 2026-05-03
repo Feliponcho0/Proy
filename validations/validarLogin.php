@@ -1,26 +1,28 @@
+
 <?php
-    session_start();
+    require_once 'check.php';
+    require_once 'conection.php';
 
-    $usuario = $_POST['usuario'] ?? '';
-    $password = $_POST['password'] ?? '';
-    $users = [
-        'admin' => ['pass' => 'admin', 'rol' => 'Admin'],
-        //'cliente' => ['pass' => 'cliente', 'rol' => 'Cliente'],
-    ];
+    //require_rol('Admin');
+    // obtener datos
+    $nombre_usuario = $_POST['nombre_usuario'] ?? '';
+    $contra = $_POST['password'] ?? '';
 
-    if(isset($users[$usuario]) && $users[$usuario]['pass'] == $password){
-        $_SESSION['usuario'] = $users[$usuario];
-        $_SESSION['rol'] = $users[$usuario]['rol'];
+    echo $nombre_usuario, $contra;
 
-        if($users[$usuario]['rol'] == 'Admin'){
-            header('Location: ../pages/dashboard.php');
-            exit;
-        }
-        // Si no es Admin, redirige a algún lado (ej. dashboard de cliente)
-        header('Location: ../index.html');
-        exit;
+    $query = "SELECT * FROM usuarios WHERE nombre_usuario = ? AND password = ?";
+    $buscar = $conn->prepare($query);
+
+    $buscar->bind_param("ss", $nombre_usuario, $contra);
+    $buscar->execute();
+
+    $resultado = $buscar->get_result();
+
+    if ($resultado->num_rows > 0) {
+        echo true; // sí existe
+        header('Location: ../pages/dashboard.php');
     } else {
-        header('Location: ../index.html?error=1');
-        exit;
+        echo false; // no existe
+        header('Location: ../index.php?error=1');
     }
 ?>
