@@ -13,7 +13,7 @@
         $_SESSION['rol'] = $users[$usuario]['rol'];
 
         if($users[$usuario]['rol'] == 'Admin'){
-            header('Location: ../pages/dashboard.html');
+            header('Location: ../pages/dashboard.php');
             exit;
         }
         // Si no es Admin, redirige a algún lado (ej. dashboard de cliente)

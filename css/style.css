@@ -11,11 +11,32 @@
         --colorCursor: #334155;
         --colorTopbar2: #931212;
         --colorNaranja: #D97706;
+
+        --colorVerde: #136b42;
+        --bg-color: #ffffff;
+        --text-color: #000000;
+    }
+
+    /* modo oscuro*/
+    body.dark-theme {
+        --bg-color: #121212;
+        --text-color: #ffffff;
+        background-image: none;
+    }
+
+    body {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        transition: 0.3s;
     }
 
     html, body{
-        background-image: linear-gradient(to top, var(--colorBody) 0%, #e6e7e7 100%);
         min-height: 100%;
+    }
+    /*termina*/
+    
+    body:not(.dark-theme){
+        background-image: linear-gradient(to top, var(--colorBody) 0%, #e6e7e7 100%);
     }
     
     #mi-contenido {
@@ -122,6 +143,11 @@
         transition: all 0.5s ease;
     }
 
+    .boton-verde-hover:hover{
+        background-color: var(--colorVerde) !important;
+        color:#ffffff !important;
+        transition: all 0.5s ease;
+    }
 
     .nav-link.active {
         background-color: var(--colorEfectoHoverActivo) !important;
@@ -141,3 +167,5 @@
     .col.p-0 {
         overflow: visible !important;
     }
+
+
