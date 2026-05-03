@@ -100,9 +100,13 @@
                     </button>
                     <button type="button" class="btn text-white bg-white bg-opacity-10 dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">
                     </button>
-                    <ul class="dropdown-menu shadow p-1 border-1">
-                        <li class="dropdown-item">Abarrotes López</li>
-                    </ul>
+                    <div id = "add">
+                        <ul class="dropdown-menu shadow p-1 border-1">
+                            <li class="dropdown-item" type = "button">
+                                Abarrotes López
+                            </li>
+                        </ul>
+                    </div>
                 </div>
 
                 <div class="btn-group ms-auto">

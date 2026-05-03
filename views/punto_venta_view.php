@@ -1,5 +1,5 @@
-<div class="titulo-principal pb-2 mb-0">
-    <h1 class=" tipoLetra fw-bold pb-2">Punto de venta</h1>
+<div class="pb-2 mb-0">
+    <h1 class=" tipoLetra fw-semibold pb-2 fs-4">Punto de venta</h1>
     <div class="row">
         <div class="col-sm-9">
             <div class="card shadow h-100">

@@ -1,5 +1,5 @@
-<div class="titulo-principal pb-2 mb-0">
-    <h1 class="tipoLetra fw-semibold mb-0">Reportes</h1>
+<div class="pb-2 mb-0">
+    <h1 class="tipoLetra fw-semibold mb-0 fs-4">Reportes</h1>
     <p class="text-muted">Análisis y exportación de datos</p>
     <div class="btn-toolbar pt-2" role="toolbar" aria-label="Toolbar with button groups">
         <div class="btn-group border border-primary border-1" role="group" aria-label="First group">
